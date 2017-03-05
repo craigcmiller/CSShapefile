@@ -38,8 +38,9 @@ namespace CSShapefile
 			ShapefileHeader header = new ShapefileHeader
 			{
 				FileCode = Endian.Swap(BitConverter.ToInt32(headerBytes, 0)),
-				FileLength = Endian.Swap(BitConverter.ToInt32(headerBytes, 24)),
+				FileLengthWords = Endian.Swap(BitConverter.ToInt32(headerBytes, 24)),
 				Version = BitConverter.ToInt32(headerBytes, 28),
+				ShapeType = (ShapeType)BitConverter.ToInt32(headerBytes, 32),
 				BoundingBox = CreateBoundingBox(headerBytes, 36)
 			};
 

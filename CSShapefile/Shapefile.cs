@@ -21,12 +21,19 @@ namespace CSShapefile
 		/// <summary>
 		/// Gets or sets the file length in 16 bit words
 		/// </summary>
-		public int FileLength { get; set; }
+		public int FileLengthWords { get; set; }
+
+		public int FileLengthBytes
+		{
+			get { return FileLengthWords * 2; }
+		}
 
 		/// <summary>
 		/// 1000
 		/// </summary>
 		public int Version { get; set; }
+
+		public ShapeType ShapeType { get; set; }
 
 		public BoundingBox BoundingBox { get; set; }
 	}

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CSShapefile
 {
-	public enum ShapeType
+	public enum ShapeType : int
 	{
 		NullShape = 0,
 		Point = 1,
