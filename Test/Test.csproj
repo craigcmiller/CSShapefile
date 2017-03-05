@@ -33,5 +33,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSShapefile\CSShapefile.csproj">
+      <Project>{86101872-1FD8-4629-A289-D83A7317247B}</Project>
+      <Name>CSShapefile</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

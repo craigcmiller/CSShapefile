@@ -1,13 +1,17 @@
 ﻿<Properties StartupConfiguration="{0A667529-720A-45E0-B35E-0753E155E6F5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CSShapefile/Endian.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test/Program.cs">
     <Files>
-      <File FileName="CSShapefile/ShapefileReader.cs" Line="16" Column="21" />
-      <File FileName="CSShapefile/Endian.cs" Line="5" Column="3" />
+      <File FileName="CSShapefile/ShapefileReader.cs" Line="44" Column="6" />
+      <File FileName="CSShapefile/Shapefile.cs" Line="30" Column="3" />
+      <File FileName="CSShapefile/Endian.cs" Line="18" Column="68" />
+      <File FileName="Test/Program.cs" Line="9" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/craig/Projects/CSShapefile/Test/Program.cs" relfile="Test/Program.cs" line="9" column="27" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

@@ -33,6 +33,8 @@
     <Compile Include="ShapefileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Endian.cs" />
+    <Compile Include="Shapefile.cs" />
+    <Compile Include="ShapeType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

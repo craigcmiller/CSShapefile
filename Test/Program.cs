@@ -1,4 +1,5 @@
 ﻿using System;
+using CSShapefile;
 
 namespace Test
 {
@@ -6,7 +7,9 @@ namespace Test
 	{
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Shapefile shapefile = ShapefileReader.ShapefileFromPath("/Users/craig/Downloads/libspatialite-4.4.0-RC1/test/shp/foggia/local_councils.shp");
+
+			Console.WriteLine("Test");
 		}
 	}
 }
