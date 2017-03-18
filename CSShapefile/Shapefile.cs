@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace CSShapefile
 {
 	public class Shapefile
 	{
-		public Shapefile()
+		public Shapefile(ShapefileHeader header)
 		{
-			
+			Header = header;
+			Records = new List<ShapeRecord>();
 		}
 
-		public ShapefileHeader Header { get; set; }
+		public ShapefileHeader Header { get; }
+
+		public IList<ShapeRecord> Records { get; }
 	}
 
 	public struct ShapefileHeader
@@ -36,6 +41,20 @@ namespace CSShapefile
 		public ShapeType ShapeType { get; set; }
 
 		public BoundingBox BoundingBox { get; set; }
+	}
+
+	public struct RecordHeader
+	{
+		public readonly int RecordNumber;
+		public readonly int ContentLengthWords;
+
+		public RecordHeader(int recordNumber, int contentLengthWords)
+		{
+			RecordNumber = recordNumber;
+			ContentLengthWords = contentLengthWords;
+		}
+
+		public int ContentLengthBytes { get { return ContentLengthWords * 2; } }
 	}
 
 	public struct BoundingBox

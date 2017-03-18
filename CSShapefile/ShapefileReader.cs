@@ -44,12 +44,39 @@ namespace CSShapefile
 				BoundingBox = CreateBoundingBox(headerBytes, 36)
 			};
 
-			Shapefile shapefile = new Shapefile
+			Shapefile shapefile = new Shapefile(header);
+
+			int wordsRead = 0;
+			while (wordsRead < header.FileLengthWords)
 			{
-				Header = header
-			};
+				RecordHeader recordHeader = ReadRecordHeader();
+				wordsRead += 4;
+
+				ShapeRecord record = new ShapeRecord(recordHeader);
+				shapefile.Records.Add(record);
+
+				ReadRecord(shapefile, recordHeader);
+				wordsRead += recordHeader.ContentLengthWords;
+			}
 
 			return shapefile;
+		}
+
+		private RecordHeader ReadRecordHeader()
+		{
+			byte[] headerBytes = new byte[8];
+
+			_stream.Read(headerBytes, 0, 8);
+
+			return new RecordHeader(
+				Endian.Swap(BitConverter.ToInt32(headerBytes, 0)),
+				Endian.Swap(BitConverter.ToInt32(headerBytes, 4)));
+		}
+
+		private void ReadRecord(Shapefile shapefile, RecordHeader header)
+		{
+			byte[] buffer = new byte[header.ContentLengthBytes];
+			_stream.Read(buffer, 0, header.ContentLengthBytes);
 		}
 
 		private static BoundingBox CreateBoundingBox(byte[] bytes, int start)
