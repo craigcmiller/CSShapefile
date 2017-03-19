@@ -35,7 +35,17 @@
     <Compile Include="Endian.cs" />
     <Compile Include="Shapefile.cs" />
     <Compile Include="ShapeType.cs" />
-    <Compile Include="ShapeRecord.cs" />
+    <Compile Include="Records\IRecord.cs" />
+    <Compile Include="Records\PolygonRecord.cs" />
+    <Compile Include="ShapefileHeader.cs" />
+    <Compile Include="RecordHeader.cs" />
+    <Compile Include="ShapePoint.cs" />
+    <Compile Include="Records\PointRecord.cs" />
+    <Compile Include="Records\MultiPointRecord.cs" />
+    <Compile Include="Records\PolyLineRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Records\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
