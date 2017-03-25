@@ -44,7 +44,9 @@ namespace CSShapefile
 				{ShapeType.Point, ReadPointRecord},
 				{ShapeType.MultiPoint, ReadMultiPointRecord},
 				{ShapeType.PolyLine, ReadPolyLineRecord},
-				{ShapeType.Polygon, ReadPolygonRecord}
+				{ShapeType.Polygon, ReadPolygonRecord},
+				{ShapeType.PointM, ReadPointMRecord},
+				{ShapeType.MultiPointM, ReadMultiPointMRecord}
 			};
 		}
 
@@ -131,6 +133,11 @@ namespace CSShapefile
 			return new PointRecord(CreatePoint(bytes, 4));
 		}
 
+		private PointMRecord ReadPointMRecord(byte[] bytes)
+		{
+			return new PointMRecord(CreatePoint(bytes, 4), BitConverter.ToDouble(bytes, 20));
+		}
+
 		private MultiPointRecord ReadMultiPointRecord(byte[] bytes)
 		{
 			int numPoints = BitConverter.ToInt32(bytes, 36);
@@ -142,6 +149,27 @@ namespace CSShapefile
 			}
 
 			return new MultiPointRecord(CreateXYBoundingBox(bytes, 4), points);
+		}
+
+		private MultiPointMRecord ReadMultiPointMRecord(byte[] bytes)
+		{
+			int numPoints = BitConverter.ToInt32(bytes, 36);
+
+			List<ShapePoint> points = new List<ShapePoint>(numPoints);
+			List<double> measures = new List<double>(numPoints);
+			for (int i = 0; i < numPoints; i++)
+			{
+				points.Add(CreatePoint(bytes, 40 + i * 16));
+
+				measures.Add(BitConverter.ToDouble(bytes, 40 + 16 * numPoints + 16));
+			}
+
+			return new MultiPointMRecord(
+				CreateXYBoundingBox(bytes, 4),
+				points,
+				BitConverter.ToDouble(bytes, 40 + 16 * numPoints),
+				BitConverter.ToDouble(bytes, 40 + 16 * numPoints + 16),
+				measures);
 		}
 
 		private PolyLineRecord ReadPolyLineRecord(byte[] bytes)

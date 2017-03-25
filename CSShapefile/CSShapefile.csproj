@@ -43,6 +43,8 @@
     <Compile Include="Records\PointRecord.cs" />
     <Compile Include="Records\MultiPointRecord.cs" />
     <Compile Include="Records\PolyLineRecord.cs" />
+    <Compile Include="Records\PointMRecord.cs" />
+    <Compile Include="Records\MultiPointMRecord.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Records\" />
